@@ -1,6 +1,6 @@
 ---
 title: 第三章 计算机常用云服务及使用
-date: 2025-05-03 13:00:59
+date: 2025-04-03 13:00:59
 updated: 2025-05-15 14:00:59
 tags: 
 categories:
@@ -338,6 +338,7 @@ CDN:
 	```
 3. 配置`_config.yml` 中的 deploy 字段：
 ``` yaml
+# 确保发布的静态网页被部署到 GitHub 指定仓库中的 gh-pages 分支
 deploy:
   type: git
   repo: https://github.com/你的用户名/ai-classroom.git
@@ -346,14 +347,88 @@ deploy:
 
 #### 操作
 
-1. 初始化 Git，并提交源代码到 GitHub
+**1. 初始化 Git，并提交源代码到 GitHub**
+
 ``` bash
 git init
+# 下述语句添加远程仓库
 git remote add origin https://github.com/你的用户名/ai-classroom.git
+
+# 添加并提交项目的源码
 git add .
 git commit -m "Init Hexo blog for ai-classroom"
+
+# 推送到 main 分支（保存源码）
 git branch -M main
 git push -u origin main
+```
+这样你的 **所有 Markdown 源文件 + 图片 + 配置** 都在 `main` 分支。
+
+
+**2. 部署静态网站到 `gh-pages` 分支**
+
+``` bash
+hexo clean
+hexo g
+hexo d
+```
+这会自动生成 `_deploy` 文件夹，并推送 `public/` 下的静态文件到 `gh-pages` 分支。
+
+**3.设置 GitHub Pages**
+
+- 打开 GitHub 项目 → Settings → Pages
+- Source 选择：`gh-pages` 分支
+- 保存后你将得到一个访问地址：`https://你的用户名.github.io/ai-classroom/`
+
+**4. 如何持续写作并同步**
+
+每次写完新文章后：
+
+``` bash
+# 提交源文件到 main 分支
+git add .
+git commit -m "Add new post"
+git push origin main
+
+# 发布网站
+hexo clean
+hexo g
+hexo d
 
 ```
-1. 部署静态网站到 `gh-pages` 分支
+
+#### `GitHub`仓库结构
+
+| 分支         | 用途                                       |
+| ---------- | ---------------------------------------- |
+| `main`     | 保存所有 Markdown 源文件、资源、配置                  |
+| `gh-pages` | 由 Hexo 自动生成的`/public`目录下的静态网页（Hexo 自动推送） |
+
+#### 其他
+
+**1. 失去CSS**
+
+部分情况下，如果`_config.yml`没有设置好，会导致推送到 GitHub 的页面失去了样式（CSS）。需要对Hexo 项目的 `_config.yml`（主配置，不是 theme 配置）中添加：
+``` yaml
+# 注意：不要以 / 结尾！
+url: https://仓库名.github.io
+root: /ai-classroom/
+```
+
+如果已经有这两个配置，需要确认它们是完全正确的：
+
+| 字段   | 说明                    | 示例值                            |
+| ---- | --------------------- | ------------------------------ |
+| url  | GitHub Pages 的完整 URL  | `https://alifespace.github.io` |
+| root | 项目在 GitHub Pages 的子路径 | `/ai-classroom/` （注意结尾有 `/`）   |
+
+**2. 强制浏览器刷新**
+
+部署在GitHub Pages 上时，Hexo + Butterfly 的静态文件会被 GitHub 的 CDN 缓存（Cloudflare/fastly），所以浏览器经常不会马上刷新你更新后的样式或脚本。我们可以通过使用版本参数控制浏览器的刷新动作。该参数在`_config.butterfly.yml`中设置。
+
+``` yaml
+# 每次部署到 GitHub Pages 后，手动修改 `version` 的值（例如换一个日期）
+version: 20250506
+```
+
+浏览器和 CDN 都会认为这是新文件，从而重新下载，而不是从缓存中加载。
