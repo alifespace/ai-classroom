@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "09b3702b3582ea99",
+        "id": "94f40af257d9dfda",
         "type": "tabs",
         "children": [
           {
-            "id": "dbdd2a9a269cab2a",
+            "id": "a62303bb6eea49f0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/work/202502.md",
+                "file": "source/_posts/ai/pc-common-003.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202502"
+              "title": "pc-common-003"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cbff92ee81040245",
@@ -141,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/work/202502.md",
+                "file": "source/_posts/ai/pc-common-003.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "202502 的大纲"
+              "title": "pc-common-003 的大纲"
             }
           }
         ],
@@ -167,37 +166,38 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "dbdd2a9a269cab2a",
+  "active": "a62303bb6eea49f0",
   "lastOpenFiles": [
-    "public/css/var.css",
-    "public/css/index.css",
-    "public/css",
-    "public/categories/计算机/软件服务/index.html",
-    "public/categories/程序设计/基础概念/index.html",
-    "public/categories/计算机/硬件/index.html",
-    "public/categories/计算机/软件服务",
-    "public/categories/计算机/硬件",
-    "public/categories/计算机/index.html",
-    "public/categories/程序设计/基础概念",
-    "public/categories/程序设计/index.html",
-    "public/2025/05/18/ai/programming-001/20250505144822.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505083129.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505082932.png",
-    "public/2025/05/07/ai/pc-structure-001/20250504213830.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505082225.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505080534.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505080107.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505075146.png",
-    "public/2025/05/07/ai/pc-structure-001/20250505165101.jpg",
-    "public/2025/05/07/ai/pc-structure-001/20250505163413.jpg",
-    "source/_posts/ai/programming-001.md",
-    "source/_posts/ai/pc-structure-002.md",
-    "source/_posts/ai/pc-structure-001.md",
+    "source/_posts/ai/pc-common-003/password4220250506223110.jpg",
+    "source/_posts/ai/pc-common-003/password320250506221827.png",
     "source/_posts/ai/pc-common-003.md",
+    "db.json",
+    "public/archives/2025/04/index.html",
+    "public/archives/2025/04",
+    "public/categories/计算机/软件服务/index.html",
+    "public/categories/计算机/软件服务",
+    "public/categories/程序设计/基础概念/index.html",
+    "public/categories/程序设计/基础概念",
+    "public/2025/05/18/ai/programming-001/index.html",
+    "public/2025/05/18/ai/programming-001/20250505144822.png",
+    "public/2025/05/07/ai/pc-structure-001/20250505165101.jpg",
+    "public/2025/05/07/ai/pc-structure-001/index.html",
+    "public/2025/05/07/ai/pc-structure-001/20250504213830.png",
+    "public/2025/05/07/ai/pc-structure-001/20250505163413.jpg",
+    "public/2025/05/07/ai/pc-structure-001/20250505074654.jpg",
+    "public/2025/05/07/ai/pc-structure-001/20250504212920.png",
+    "public/2025/05/07/ai/pc-structure-001/20250504213332.png",
+    "public/2025/05/07/ai/pc-structure-001/20250504213627.png",
+    "public/2025/05/07/ai/pc-structure-001/20250504204343.png",
+    "public/2025/05/08/ai/pc-structure-002/index.html",
+    "AmazonAnnual2025-05-06.md",
     "source/_posts/ai/pc-common-002.md",
     "source/_posts/ai/pc-common-001.md",
-    "source/_posts/ai/20250507-pc-structure-01.md",
+    "source/_posts/ai/programming-001.md",
     "source/_posts/work/202502.md",
+    "source/_posts/ai/pc-structure-002.md",
+    "source/_posts/ai/pc-structure-001.md",
+    "source/_posts/ai/20250507-pc-structure-01.md",
     "node_modules/luxon/LICENSE.md",
     "node_modules/hexo-deployer-git/node_modules/entities/readme.md",
     "source/_posts/ai/20250503-pc-common-03.md",
@@ -213,7 +213,6 @@
     "node_modules/markdown-it-abbr/CHANGELOG.md",
     "node_modules/markdown-it-footnote/CHANGELOG.md",
     "node_modules/markdown-it-mark/README.md",
-    "node_modules/css-select/node_modules/domelementtype/readme.md",
-    "node_modules/css-select/node_modules/domutils/readme.md"
+    "node_modules/css-select/node_modules/domelementtype/readme.md"
   ]
 }
