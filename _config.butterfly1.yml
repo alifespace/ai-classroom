@@ -9,6 +9,8 @@
 # Navigation Settings
 # --------------------------------------
 
+version: 202505061325
+
 nav:
   # Navigation bar logo image
   logo:
@@ -17,7 +19,7 @@ nav:
   fixed: false
 
 menu:
-  # Home: / || fas fa-home
+  Home: / || fas fa-home
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
@@ -191,7 +193,7 @@ index_post_content:
 toc:
   post: true
   page: false
-  number: true
+  number: false
   expand: false
   # Only for post
   style_simple: false
@@ -888,7 +890,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # Leave it empty if you don't need lightbox
-lightbox:
+lightbox: fancybox
 
 # --------------------------------------
 # Tag Plugins settings
@@ -1070,7 +1072,8 @@ CDN:
     # docsearch_css:
     # docsearch_js:
     # egjs_infinitegrid:
-    # fancybox:
+    fancybox:
+      enable: true
     # fancybox_css:
     # fireworks:
     # fontawesome:

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "37e6c98ebbaa54b0",
+        "id": "5d058dc7c0f6de72",
         "type": "tabs",
         "children": [
           {
-            "id": "fa847192d642d29d",
+            "id": "97c2563bb496bc42",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/ai/pc-common-003.md",
+                "file": "_posts/ai/pc-common-001.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pc-common-003"
+              "title": "pc-common-001"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/ai/pc-common-003.md",
+                "file": "_posts/ai/pc-common-001.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "pc-common-003 的大纲"
+              "title": "Outline of pc-common-001"
             }
           }
         ],
@@ -159,36 +159,42 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "fa847192d642d29d",
+  "active": "9a285bd8e8deaa40",
   "lastOpenFiles": [
-    "_posts/ai/pc-common-003/password4220250506223110.jpg",
-    "_posts/ai/pc-common-003/password320250506221827.png",
-    "_posts/ai/pc-common-003/Pasted image 20250506221827.png",
-    "_posts/ai/pc-common-003/password220250506205410.jpg",
-    "_posts/ai/pc-common-003/password120250506204823.jpg",
-    "_posts/ai/pc-common-003/password120250506204413.jpg",
-    "_posts/ai/pc-common-003/AmazonAnnual202505062034.jpg",
-    "_posts/ai/pc-common-003/AmazonAnnual2025-05-06 202928.jpg",
-    "_posts/ai/pc-common-003/Amazon Annul 2025-05-06 202928.jpg",
+    "_posts/ai/pc-common-001/20250509141055.png",
+    "_posts/ai/pc-structure-002/20250509133458.png",
+    "_posts/ai/pc-structure-001/20250505165101.jpg",
+    "_posts/ai/pc-common-001/20250509135520.png",
     "_posts/ai/pc-common-001.md",
     "_posts/ai/pc-common-002.md",
+    "_posts/ai/pc-common-001/20250509135128.png",
+    "_posts/ai/pc-structure-002.md",
+    "_posts/ai/pc-common-002",
     "_posts/ai/pc-common-003.md",
+    "_posts/ai/pc-structure-002/20250509133125.png",
+    "_posts/ai/pc-structure-002/20250509132638.png",
+    "_posts/ai/pc-structure-002/20250509132333.png",
+    "_posts/ai/pc-structure-002/20250509132218.png",
+    "_posts/ai/pc-structure-002/20250509131452.png",
+    "_posts/ai/pc-structure-002/20250508203923.png",
+    "css/_custom/custom.css",
+    "css/_custom",
+    "css/New folder",
+    "css",
+    "New folder",
     "_posts/ai/programming-001.md",
     "_posts/work/202502.md",
-    "Pasted image 20250506095748.png",
-    "_posts/ai/pc-structure-002.md",
     "_posts/ai/pc-structure-001.md",
     "_posts/work/202502",
     "_posts/work",
-    "_posts/hello-world.md",
-    "Pasted image 20250506095810.png"
+    "_posts/hello-world.md"
   ]
 }
