@@ -6,6 +6,7 @@ tags:
 categories:
   - 计算机
   - 软件服务
+toc: "true"
 ---
 # 第三章 计算机常用云服务及使用
 
@@ -476,7 +477,119 @@ npm install hexo-hide-posts --save
 
 #### 支持数学公式
 
-### 3.6.6 配置 butterfly 主题页面
+### 3.6.6 发布与保存
+
+#### 配置
+
+1. 创建 GitHub 仓库
+	- 仓库名：与项目名称一致，比如`ai-classroom`；
+	- 建议设置为 public
+2. 安装 Hexo 部署插件
+``` bash
+	npm install hexo-deployer-git --save
+	```
+3. 配置`_config.yml` 中的 deploy 字段：
+``` yaml
+# 确保发布的静态网页被部署到 GitHub 指定仓库中的 gh-pages 分支
+deploy:
+  type: git
+  repo: https://github.com/你的用户名/ai-classroom.git
+  branch: gh-pages
+```
+
+#### 操作
+
+**1. 初始化 Git，并提交源代码到 GitHub**
+
+``` bash
+git init
+# 下述语句添加远程仓库
+git remote add origin https://github.com/你的用户名/ai-classroom.git
+
+# 添加并提交项目的源码
+git add .
+git commit -m "Init Hexo blog for ai-classroom"
+
+# 推送到 main 分支（保存源码）
+git branch -M main
+git push -u origin main
+```
+这样你的 **所有 Markdown 源文件 + 图片 + 配置** 都在 `main` 分支。
+
+
+**2. 部署静态网站到 `gh-pages` 分支**
+
+``` bash
+hexo clean
+hexo g
+hexo d
+```
+这会自动生成 `_deploy` 文件夹，并推送 `public/` 下的静态文件到 `gh-pages` 分支。
+
+**3.设置 GitHub Pages**
+
+- 打开 GitHub 项目 → Settings → Pages
+- Source 选择：`gh-pages` 分支
+- 保存后你将得到一个访问地址：`https://你的用户名.github.io/ai-classroom/`
+
+**4. 如何持续写作并同步**
+
+每次写完新文章后：
+
+``` bash
+# 提交源文件到 main 分支
+git add .
+git commit -m "Add new post"
+git push origin main
+
+# 多台电脑书写 Hexo，在另外一台电脑上获得 git 上的最新版本
+git fetch
+git pull origin main
+
+# 发布网站
+hexo clean
+hexo g
+hexo d
+
+```
+
+#### `GitHub`仓库结构
+
+| 分支         | 用途                                       |
+| ---------- | ---------------------------------------- |
+| `main`     | 保存所有 Markdown 源文件、资源、配置                  |
+| `gh-pages` | 由 Hexo 自动生成的`/public`目录下的静态网页（Hexo 自动推送） |
+
+#### 其他
+
+**1. 失去CSS**
+
+部分情况下，如果`_config.yml`没有设置好，会导致推送到 GitHub 的页面失去了样式（CSS）。需要对Hexo 项目的 `_config.yml`（主配置，不是 theme 配置）中添加：
+``` yaml
+# 注意：不要以 / 结尾！
+url: https://仓库名.github.io
+root: /ai-classroom/
+```
+
+如果已经有这两个配置，需要确认它们是完全正确的：
+
+| 字段   | 说明                    | 示例值                            |
+| ---- | --------------------- | ------------------------------ |
+| url  | GitHub Pages 的完整 URL  | `https://alifespace.github.io` |
+| root | 项目在 GitHub Pages 的子路径 | `/ai-classroom/` （注意结尾有 `/`）   |
+
+**2. 强制浏览器刷新**
+
+部署在GitHub Pages 上时，Hexo + Butterfly 的静态文件会被 GitHub 的 CDN 缓存（Cloudflare/fastly），所以浏览器经常不会马上刷新你更新后的样式或脚本。我们可以通过使用版本参数控制浏览器的刷新动作。该参数在`_config.butterfly.yml`中设置。
+
+``` yaml
+# 每次部署到 GitHub Pages 后，手动修改 `version` 的值（例如换一个日期）
+version: 20250506
+```
+
+浏览器和 CDN 都会认为这是新文件，从而重新下载，而不是从缓存中加载。
+
+### 3.6.7 配置 butterfly 主题页面
 #### 生效 categories
 
 请执行以下命令来创建`categories`页面：
@@ -569,110 +682,25 @@ CDN:
       enable: true
 ```
 
-### 3.6.7 发布与保存
 
-#### 配置
+### 3.6.8 配置 Icarus 主题
 
-1. 创建 GitHub 仓库
-	- 仓库名：与项目名称一致，比如`ai-classroom`；
-	- 建议设置为 public
-2. 安装 Hexo 部署插件
-``` bash
-	npm install hexo-deployer-git --save
-	```
-3. 配置`_config.yml` 中的 deploy 字段：
-``` yaml
-# 确保发布的静态网页被部署到 GitHub 指定仓库中的 gh-pages 分支
-deploy:
-  type: git
-  repo: https://github.com/你的用户名/ai-classroom.git
-  branch: gh-pages
-```
-
-#### 操作
-
-**1. 初始化 Git，并提交源代码到 GitHub**
+#### 安装主题
 
 ``` bash
-git init
-# 下述语句添加远程仓库
-git remote add origin https://github.com/你的用户名/ai-classroom.git
+cd your-hexo-site
+git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus
 
-# 添加并提交项目的源码
-git add .
-git commit -m "Init Hexo blog for ai-classroom"
-
-# 推送到 main 分支（保存源码）
-git branch -M main
-git push -u origin main
-```
-这样你的 **所有 Markdown 源文件 + 图片 + 配置** 都在 `main` 分支。
-
-
-**2. 部署静态网站到 `gh-pages` 分支**
-
-``` bash
-hexo clean
-hexo g
-hexo d
-```
-这会自动生成 `_deploy` 文件夹，并推送 `public/` 下的静态文件到 `gh-pages` 分支。
-
-**3.设置 GitHub Pages**
-
-- 打开 GitHub 项目 → Settings → Pages
-- Source 选择：`gh-pages` 分支
-- 保存后你将得到一个访问地址：`https://你的用户名.github.io/ai-classroom/`
-
-**4. 如何持续写作并同步**
-
-每次写完新文章后：
-
-``` bash
-# 提交源文件到 main 分支
-git add .
-git commit -m "Add new post"
-git push origin main
-
-# 发布网站
-hexo clean
-hexo g
-hexo d
-
+## 安装依赖
+npm install -S semver hexo-renderer-inferno bulma-stylus@0.8.0 hexo-component-inferno
 ```
 
-#### `GitHub`仓库结构
+#### 启用主题
 
-| 分支         | 用途                                       |
-| ---------- | ---------------------------------------- |
-| `main`     | 保存所有 Markdown 源文件、资源、配置                  |
-| `gh-pages` | 由 Hexo 自动生成的`/public`目录下的静态网页（Hexo 自动推送） |
+在 Hexo 项目的 `_config.yml` 中设置：
 
-#### 其他
-
-**1. 失去CSS**
-
-部分情况下，如果`_config.yml`没有设置好，会导致推送到 GitHub 的页面失去了样式（CSS）。需要对Hexo 项目的 `_config.yml`（主配置，不是 theme 配置）中添加：
-``` yaml
-# 注意：不要以 / 结尾！
-url: https://仓库名.github.io
-root: /ai-classroom/
+```yaml
+theme: icarus
 ```
 
-如果已经有这两个配置，需要确认它们是完全正确的：
-
-| 字段   | 说明                    | 示例值                            |
-| ---- | --------------------- | ------------------------------ |
-| url  | GitHub Pages 的完整 URL  | `https://alifespace.github.io` |
-| root | 项目在 GitHub Pages 的子路径 | `/ai-classroom/` （注意结尾有 `/`）   |
-
-**2. 强制浏览器刷新**
-
-部署在GitHub Pages 上时，Hexo + Butterfly 的静态文件会被 GitHub 的 CDN 缓存（Cloudflare/fastly），所以浏览器经常不会马上刷新你更新后的样式或脚本。我们可以通过使用版本参数控制浏览器的刷新动作。该参数在`_config.butterfly.yml`中设置。
-
-``` yaml
-# 每次部署到 GitHub Pages 后，手动修改 `version` 的值（例如换一个日期）
-version: 20250506
-```
-
-浏览器和 CDN 都会认为这是新文件，从而重新下载，而不是从缓存中加载。
+第一次使用`hexo clean; hexo g; hexo s`会自动在项目的根目录中建立一个针对该主题配置的 yaml 文件`_config.icarus.yaml`。

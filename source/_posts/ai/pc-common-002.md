@@ -8,5 +8,9 @@ categories:
 ---
 # 第二章 计算机常用软件及配置
 
+## Windows - scoop
+
+
+
 
 

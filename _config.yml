@@ -102,6 +102,8 @@ ignore:
 # theme: landscape
 theme: butterfly
 theme_config: _config.butterfly.yml
+# theme: icarus
+# theme_config: _config.icarus.yml
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
