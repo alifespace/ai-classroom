@@ -1,8 +1,10 @@
 ---
 title: 第三章 计算机常用云服务及使用
-date: 2025-04-03 13:00:59
-updated: 2025-05-08 14:00:59
-tags: 
+date: 2025-05-03 13:00:59
+updated: 2025-05-12 14:00:59
+tags:
+  - 云服务
+  - 安全
 categories:
   - 计算机
   - 软件服务
@@ -670,18 +672,6 @@ layout: tags
 ``` yml
 lightbox: fancybox
 ```
-
-2. 正确设置 Fancybox 的 CDN：
-
-```yml
-CDN:
-  internal_provider: local
-  third_party_provider: jsdelivr
-  option:
-    fancybox:
-      enable: true
-```
-
 
 ### 3.6.8 配置 Icarus 主题
 
