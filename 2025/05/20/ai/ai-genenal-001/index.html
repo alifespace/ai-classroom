@@ -1,0 +1,537 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/ai-classroom/css/bilicard.css">
+<!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第一章 AI 通论 | 生命不息，学习不止</title><meta name="author" content="lifespace"><meta name="copyright" content="lifespace"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.1 人类是如何学习知识的 这是个非常本质的问题，人类学习的核心不是“记住信息”，或者会做某些习题。而是将信息纳入个体已有的知识网络中，使其具有意义。人类学习的本质是主动构建与修正认知模型。 1.1.1 学习的目的 人类学习的目的是最起码要能够获得迁移应用的知识。人类学习的底线指标是：是否能将所学用于陌生场景下的“问题识别 + 解决策略构建”中。 能够迁移是学习的核心指标。只有当你能在不同题型、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 AI 通论">
+<meta property="og:url" content="https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/index.html">
+<meta property="og:site_name" content="生命不息，学习不止">
+<meta property="og:description" content="1.1 人类是如何学习知识的 这是个非常本质的问题，人类学习的核心不是“记住信息”，或者会做某些习题。而是将信息纳入个体已有的知识网络中，使其具有意义。人类学习的本质是主动构建与修正认知模型。 1.1.1 学习的目的 人类学习的目的是最起码要能够获得迁移应用的知识。人类学习的底线指标是：是否能将所学用于陌生场景下的“问题识别 + 解决策略构建”中。 能够迁移是学习的核心指标。只有当你能在不同题型、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/cover.jpg">
+<meta property="article:published_time" content="2025-05-20T18:33:52.000Z">
+<meta property="article:modified_time" content="2025-05-29T22:06:03.916Z">
+<meta property="article:author" content="lifespace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/cover.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "第一章 AI 通论",
+  "url": "https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/",
+  "image": "https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/cover.jpg",
+  "datePublished": "2025-05-20T18:33:52.000Z",
+  "dateModified": "2025-05-29T22:06:03.916Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "lifespace",
+      "url": "https://alifespace.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/ai-classroom/img/favicon.png"><link rel="canonical" href="https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/ai-classroom/css/index.css?v=5.4.0-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-39ZQR3BVZ9"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-39ZQR3BVZ9')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-39ZQR3BVZ9', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/ai-classroom/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第一章 AI 通论',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/ai-classroom/2025/05/20/ai/ai-genenal-001/cover.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/ai-classroom/"><span class="site-name">生命不息，学习不止</span></a><a class="nav-page-title" href="/ai-classroom/"><span class="site-name">第一章 AI 通论</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">第一章 AI 通论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-20T18:33:52.000Z" title="发表于 2025-05-20 11:33:52">2025-05-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-29T22:06:03.916Z" title="更新于 2025-05-29 15:06:03">2025-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/ai-classroom/categories/AI/">AI</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/ai-classroom/categories/AI/%E4%BC%A6%E7%90%86/">伦理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-1-人类是如何学习知识的">1.1 人类是如何学习知识的</h2>
+<p>这是个非常本质的问题，人类学习的核心不是“记住信息”，或者会做某些习题。而是将信息纳入个体已有的知识网络中，使其具有意义。<strong>人类学习的本质是主动构建与修正认知模型</strong>。</p>
+<h3 id="1-1-1-学习的目的">1.1.1 学习的目的</h3>
+<p>人类学习的目的是最起码要能够获得迁移应用的知识。人类学习的底线指标是：<strong>是否能将所学用于陌生场景下的“问题识别 + 解决策略构建”中</strong>。</p>
+<p>能够<strong>迁移</strong>是学习的核心指标。只有当你能在<strong>不同题型、不同科目、真实生活、陌生任务</strong>中灵活运用所学，这才是<strong>知识的“拥有权”</strong>，不是“租用权”。</p>
+<ul>
+<li>建构了知识网络；</li>
+<li>掌握了抽象规则；</li>
+<li>能在变化的场景中识别出不变的部分；</li>
+</ul>
+<p>没有迁移，意味着学习只停留在“表层加工”：</p>
+<ul>
+<li>背了历史事件，但不知道它和现实政治有什么关系；</li>
+<li>会解方程，但不知道如何用它建模生活问题；</li>
+<li>背了定义，但换种问法就答不出；</li>
+</ul>
+<h3 id="1-1-2-三个基本过程">1.1.2 三个基本过程</h3>
+<p><strong>1. 感知（Perception）</strong><br>
+人类通过感官（视觉、听觉、触觉等）接收外界刺激，这是原始数据的来源。比如你看到“苹果”，听到“自由落体”。</p>
+<p><strong>2. 加工与理解（Processing）</strong><br>
+大脑会将感知到的信息与<strong>已有知识结构</strong>连接起来。这个过程涉及：</p>
+<ul>
+<li><strong>注意力系统</strong>：决定我们关注什么；</li>
+<li><strong>工作记忆</strong>：临时加工信息，如“短时记忆”；</li>
+<li><strong>长期记忆调用</strong>：从过去经验中找相似的知识框架；</li>
+</ul>
+<p>这就像你听到“自由落体”时，会联想到牛顿、重力、加速度等。</p>
+<p><strong>3. 编码与固化（Encoding &amp; Consolidation）</strong><br>
+信息会被重新组织，嵌入到脑中的知识网络。形成所谓的**“schema（图式）”**。重复、多模态输入（听、说、写、做）或情绪参与能增强这一过程。</p>
+<h3 id="1-1-3-知识的形成是“连接主义”">1.1.3 知识的形成是“连接主义”</h3>
+<p>大脑通过<strong>突触可塑性（Synaptic Plasticity）实现学习：</strong></p>
+<ul>
+<li>学习时，大脑中相关的神经元<strong>连接会被加强（或削弱）</strong>；</li>
+<li>重复使用的通路会变得更牢固（“用进废退”）；</li>
+</ul>
+<p>这和神经网络训练的“权重调整”非常相似——<strong>多次刺激 → 权重更新 → 模型记忆增强。</strong></p>
+<h3 id="1-1-4-类比-AI-的学习过程">1.1.4 类比 AI 的学习过程</h3>
+<p>人类 ≠ 只接收数据，而是做以下几件事：</p>
+<table>
+<thead>
+<tr>
+<th>人类大脑机制</th>
+<th>类比 AI 模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感知输入</td>
+<td>数据预处理/Input Embedding</td>
+</tr>
+<tr>
+<td>意义提取</td>
+<td>模型结构学习特征</td>
+</tr>
+<tr>
+<td>网络连接变化</td>
+<td>权重调整/Loss 下降</td>
+</tr>
+<tr>
+<td>强化回路</td>
+<td>反馈优化（如 RL）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-1-5-学习是一个循环系统">1.1.5 学习是一个循环系统</h3>
+<p>感知 → 理解 → 记忆 → 应用 → 反馈 → 再学习。</p>
+<ul>
+<li><strong>通过感官接收信息（输入）；</strong></li>
+<li><strong>在已有知识图谱中寻找联结（理解）；</strong></li>
+<li><strong>通过情绪、重复、结构化固化为长期记忆（存储）；</strong></li>
+<li><strong>在实践中不断检验与调整（反馈+重构）；</strong></li>
+</ul>
+<h2 id="1-2-AI-对人类学习的冲击">1.2 AI 对人类学习的冲击</h2>
+<p>AI已经极大提升了学生<strong>获取信息的速度和效率</strong>，但这种“外包式认知”也带来了几个<strong>核心弱点</strong>，如果不加以关注，会让<strong>获得答案变成失去个人能力</strong>。</p>
+<h3 id="1-2-1-动机转向“效率驱动”而非“意义驱动”">1.2.1 动机转向“效率驱动”而非“意义驱动”</h3>
+<p><strong>问题：</strong> AI使用带来即时满足，使学生关注“如何最快完成任务”，忽略了“为什么学这件事”。</p>
+<p><strong>后果：</strong></p>
+<ul>
+<li>学习目标变成“完成一份作业”，而非“理解一个原理”；</li>
+<li>缺乏持久好奇心与内在动机；</li>
+<li>学习无法产生长期改变；</li>
+</ul>
+<p>✅ <strong>对策：</strong> 教育者应引导学生将AI当成<strong>探索伙伴</strong>而非<strong>作业完成器</strong>，并将“做中学”“教中学”“应用中学”纳入设计。</p>
+<h3 id="1-2-2-认知偷懒（Cognitive-Offloading）导致理解能力下降">1.2.2 认知偷懒（Cognitive Offloading）导致理解能力下降</h3>
+<p><strong>问题：</strong> 学生越来越依赖AI直接给出答案，而不是自己推理或建构解题思路。</p>
+<p><strong>后果：</strong></p>
+<ul>
+<li>缺乏对知识的结构性理解；</li>
+<li>无法迁移所学知识到新情境；</li>
+<li>解题“看似懂了”，但考试换个题目就不会；</li>
+</ul>
+<p>✅ <strong>对策：</strong> 鼓励学生<strong>先思考再求助AI</strong>，让AI只提供线索、类比或逻辑检查，而非直接给答案。</p>
+<h3 id="1-2-3-批判性思维能力退化">1.2.3 批判性思维能力退化</h3>
+<p><strong>问题：</strong> 学生容易把AI生成的内容“照单全收”，缺乏质疑与辨别能力。</p>
+<p><strong>后果：</strong></p>
+<ul>
+<li>无法识别AI输出中的错误或偏见；</li>
+<li>无法进行深度对比或观点冲突分析；</li>
+<li>在写作与讨论中出现“套话、空话”而非深度观点；</li>
+</ul>
+<p>✅ <strong>对策：</strong> 训练学生用<strong>Socratic questioning</strong>或<strong>三问法</strong>挑战AI输出，例如：</p>
+<ul>
+<li>它的依据是什么？</li>
+<li>是否有其他解释？</li>
+<li>答案的前提是什么？如果这个前提不成立，结论还有效吗？</li>
+</ul>
+<h3 id="1-2-4-元认知能力薄弱：不知道自己“不知道什么”">1.2.4 元认知能力薄弱：不知道自己“不知道什么”</h3>
+<p><strong>问题：</strong> AI给出“合理表面答案”掩盖了学生的知识盲点。</p>
+<p><strong>后果：</strong></p>
+<ul>
+<li>学生错觉“已经掌握”，但无法独立重建知识；</li>
+<li>测验中暴露出“看得懂却做不出”的情况；</li>
+<li>缺乏反思与知识框架建设能力。</li>
+</ul>
+<p>✅ <strong>对策：</strong> 让学生<strong>刻意复述+类比+错误分析</strong>，而非仅“复制粘贴”AI答案。</p>
+<h3 id="1-2-5-自己学习的效率问题">1.2.5 自己学习的效率问题</h3>
+<p>真正长久记住的、能迁移应用的知识，都是通过<strong>主动建构 + 错误修正</strong>内化来的。</p>
+<h3 id="1-2-6-总结">1.2.6 总结</h3>
+<table>
+<thead>
+<tr>
+<th>弱点</th>
+<th>核心症状</th>
+<th>风险</th>
+<th>推荐对策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动机外移</td>
+<td>为交作业而学</td>
+<td>浅层、短期学习</td>
+<td>强调学习意义与探索欲</td>
+</tr>
+<tr>
+<td>认知偷懒</td>
+<td>一问AI就出答案</td>
+<td>不会思考与迁移</td>
+<td>要求先思考再询问</td>
+</tr>
+<tr>
+<td>缺乏批判性</td>
+<td>无判断能力</td>
+<td>接受错误、偏见</td>
+<td>训练质疑AI的能力</td>
+</tr>
+<tr>
+<td>元认知薄弱</td>
+<td>不知道不会</td>
+<td>错误自信</td>
+<td>鼓励总结+复述+反思</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-7-例子">1.2.7 例子</h3>
+<p>Q: 通过AI你知道如何计算动量、动能，但是AI把答案告诉你，但是你却不知道动量，动能在整个物理体系大厦中的作用，地位和使用场景，你觉得学生学习到了知识吗？</p>
+<p>知识不是“能解题”这么简单，而是要<strong>能解释世界、预测结果、连接其他概念、指导行动。</strong></p>
+<p>我们用布鲁姆的认知分类法（Bloom’s Taxonomy）可以清楚说明：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>举例</th>
+<th>学到了吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 记忆</td>
+<td>背公式：p = mv，K = ½mv²</td>
+<td>❌ 不算</td>
+</tr>
+<tr>
+<td>2. 理解</td>
+<td>能解释动能是什么</td>
+<td>✅ 初步</td>
+</tr>
+<tr>
+<td>3. 应用</td>
+<td>会用动量公式解题</td>
+<td>✅ 技术层面</td>
+</tr>
+<tr>
+<td>4. 分析</td>
+<td>能区分什么时候该用动量，什么时候不能</td>
+<td>✅ 高层次理解</td>
+</tr>
+<tr>
+<td>5. 综合</td>
+<td>能将动量与能量守恒结合分析物理系统</td>
+<td>✅ 核心能力</td>
+</tr>
+<tr>
+<td>6. 创造</td>
+<td>设计实验验证动能转化与损失</td>
+<td>✅ 深度掌握</td>
+</tr>
+</tbody>
+</table>
+<p>AI给出的通常只覆盖前两层，甚至只是<strong>机械地帮你“代入”</strong>。</p>
+<p><strong>1. 物理体系中“动量”与“动能”的位置图</strong></p>
+<p>在力学领域中，牛顿三大定律是基础框架，而“动量”与“动能”分别对应两种<strong>守恒律</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用类型</th>
+<th>属于哪类守恒</th>
+<th>与谁配套使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>动量（p = mv）</strong></td>
+<td>运动状态</td>
+<td><strong>动量守恒</strong>（矢量）</td>
+<td>牛顿第二、第三定律</td>
+</tr>
+<tr>
+<td><strong>动能（K = ½mv²）</strong></td>
+<td>能量形式</td>
+<td><strong>能量守恒</strong>（标量）</td>
+<td>功、势能、机械能</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. 动量（Momentum）— 保留“系统的整体运动状态”</strong></p>
+<ul>
+<li>动量是描述<strong>物体整体运动趋势</strong>的物理量，带方向；</li>
+<li>是牛顿第二定律的原始表达形式：<strong>F = dp/dt</strong>；</li>
+<li>是分析系统相互作用时是否会改变“整体运动”的关键量；</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用动量守恒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>碰撞（小球、汽车）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>爆炸（火箭喷气）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>两物体之间内力作用</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>存在外力作用</td>
+<td>❌ 不适用</td>
+</tr>
+<tr>
+<td>有摩擦/空气阻力时</td>
+<td>❌ 不守恒（动量会改变）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 动能（Kinetic Energy）— 衡量“运动能量”的多少</strong></p>
+<ul>
+<li>动能是能量的一种形式，衡量“运动有多剧烈”；</li>
+<li>在<strong>能量守恒系统</strong>中与势能、内能等相互转化；</li>
+<li>是做功定理中的核心：<strong>W = ΔK</strong>；</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用能量守恒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滑梯、抛体</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>碰撞（无能量损失）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>碰撞（有热/声能损失）</td>
+<td>❌ 动能不守恒，但总能量守恒</td>
+</tr>
+<tr>
+<td>电场中带电粒子运动</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>有非保守力做功（摩擦）</td>
+<td>✅（用功-能定理处理）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. 动能和动量举例</strong></p>
+<table>
+<thead>
+<tr>
+<th>实际情境</th>
+<th>用动量还是动能？</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子弹打进木块</td>
+<td><strong>动量守恒</strong></td>
+<td>系统受外力短时间近似为零；需分析速度变化</td>
+</tr>
+<tr>
+<td>过山车从高处滑下</td>
+<td><strong>能量守恒</strong></td>
+<td>势能→动能转化，速度高度之间关系</td>
+</tr>
+<tr>
+<td>火箭喷射上升</td>
+<td><strong>动量守恒</strong></td>
+<td>反冲原理（喷出气体的动量等于火箭获得的）</td>
+</tr>
+<tr>
+<td>有摩擦的车滑行距离</td>
+<td><strong>功-能定理</strong></td>
+<td>初始动能被摩擦力做负功消耗掉</td>
+</tr>
+<tr>
+<td>两球碰撞后弹开</td>
+<td>两者都用</td>
+<td>动量守恒判断速度；动能变化判断是否弹性碰撞</td>
+</tr>
+</tbody>
+</table>
+<p><strong>5. 总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>动量</th>
+<th>动能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是什么？</td>
+<td>物体整体运动趋势</td>
+<td>运动“能量”的表达</td>
+</tr>
+<tr>
+<td>属于哪个大类？</td>
+<td>守恒定律中的动量守恒（矢量）</td>
+<td>能量守恒中的一种形式（标量）</td>
+</tr>
+<tr>
+<td>什么时候用？</td>
+<td>碰撞、爆炸、反冲</td>
+<td>高低转化、加速、阻力、功等过程</td>
+</tr>
+<tr>
+<td>能同时使用吗？</td>
+<td>可以，但目的不同：动量解速度关系，动能解能量转化</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alifespace.github.io">lifespace</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/">https://alifespace.github.io/2025/05/20/ai/ai-genenal-001/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alifespace.github.io" target="_blank">生命不息，学习不止</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/ai-classroom/2025/05/20/ai/ai-genenal-001/cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论"><img class="cover" src="/ai-classroom/2025/07/01/games/diablo2/d2-001/cover.avif" onerror="onerror=null;src='/ai-classroom/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">暗黑破坏神2 --- 第一章 总论</div></div><div class="info-2"><div class="info-item-1"> 1.1 历史简介 《暗黑破坏神》（Diablo）系列是暴雪娱乐（Blizzard Entertainment）旗下一款极具影响力的动作角色扮演（Action Role-Playing Game, ARPG）游戏。它的起源和发展，塑造了现代 ARPG 的许多经典元素。 1.1.1《暗黑破坏神》游戏起源 (Diablo I)  最初构想：《暗黑破坏神》最初的构想并不是一款 ARPG，而是一款由 Condor （后来更名为 Blizzard North）开发的回合制角色扮演游戏。游戏的灵感来源于地牢探索和角色成长； 暴雪的介入： Condor 在开发过程中，与暴雪娱乐取得了联系。暴雪对这个项目很感兴趣，但在游戏类型上提出了重要建议：将其改为实时战斗。这一决策最终塑造了《暗黑破坏神》成为一款开创性的 ARPG； 核心理念： 游戏的理念是简单而直接的乐趣。  随机生成的地牢： 每次进入地牢都有不同的布局，增加了重复游玩的乐趣； 无尽的刷宝（Loot）： 击杀怪物掉落各种随机属性的装备，玩家追求更好的装备来提升角色； 简单的鼠标操作： 大部分操作可以通过鼠标完成，降低了上手难度； 哥特式恐...</div></div></div></a><a class="pagination-related" href="/ai-classroom/2025/05/18/ai/programming-001/" title="第一章 计算机编程概述"><img class="cover" src="/ai-classroom/2025/05/18/ai/programming-001/cover.jpg" onerror="onerror=null;src='/ai-classroom/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">第一章 计算机编程概述</div></div><div class="info-2"><div class="info-item-1">第一章 计算机编程概述 1.2 编译和执行过程 传统上，一个语言（以 c 语言为例）从编写人类可识别的语言到机器可识别的语言要经过如下的步骤。  在过程中由三个特别重要的文件：  源文件：人类可识别的语言，比如 c, python, java 等，需要遵循一定的语法规则； 汇编语言：汇编语言是一种低级编程语言，它与特定的计算机体系结构（即 CPU 类型，如 x86, ARM, MIPS 等）有着非常直接的对应关系。可以认为它是机器码（计算机能直接执行的二进制指令）的符号化表示。汇编语言是介于机器码和高级语言（如 C, Python, Java 等）之间的一种语言。它比机器码更容易阅读和编写，但比高级语言更接近硬件，抽象程度更低； 机器码：机器码是计算机能直接理解和执行的最低级的编程语言。它完全由二进制代码（0 和 1 的序列）组成。每一串特定的二进制代码都对应着 CPU 执行的一个基本操作，例如加载数据、进行算术运算、比较值或跳转到另一个指令地址。机器码是 CPU 能直接理解的二进制指令，是程序的最低层表示；  示例  人类识别的高级语言  1234567891011121314...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/ai-classroom/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/ai-classroom/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">lifespace</div><div class="author-info-description"></div><div class="site-data"><a href="/ai-classroom/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/ai-classroom/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/ai-classroom/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BA%BA%E7%B1%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%9A%84"><span class="toc-text">1.1 人类是如何学习知识的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">1.1.1 学习的目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E4%B8%89%E4%B8%AA%E5%9F%BA%E6%9C%AC%E8%BF%87%E7%A8%8B"><span class="toc-text">1.1.2 三个基本过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E7%9F%A5%E8%AF%86%E7%9A%84%E5%BD%A2%E6%88%90%E6%98%AF%E2%80%9C%E8%BF%9E%E6%8E%A5%E4%B8%BB%E4%B9%89%E2%80%9D"><span class="toc-text">1.1.3 知识的形成是“连接主义”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-%E7%B1%BB%E6%AF%94-AI-%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B"><span class="toc-text">1.1.4 类比 AI 的学习过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-5-%E5%AD%A6%E4%B9%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F"><span class="toc-text">1.1.5 学习是一个循环系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-AI-%E5%AF%B9%E4%BA%BA%E7%B1%BB%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%86%B2%E5%87%BB"><span class="toc-text">1.2 AI 对人类学习的冲击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E5%8A%A8%E6%9C%BA%E8%BD%AC%E5%90%91%E2%80%9C%E6%95%88%E7%8E%87%E9%A9%B1%E5%8A%A8%E2%80%9D%E8%80%8C%E9%9D%9E%E2%80%9C%E6%84%8F%E4%B9%89%E9%A9%B1%E5%8A%A8%E2%80%9D"><span class="toc-text">1.2.1 动机转向“效率驱动”而非“意义驱动”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E8%AE%A4%E7%9F%A5%E5%81%B7%E6%87%92%EF%BC%88Cognitive-Offloading%EF%BC%89%E5%AF%BC%E8%87%B4%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B%E4%B8%8B%E9%99%8D"><span class="toc-text">1.2.2 认知偷懒（Cognitive Offloading）导致理解能力下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-%E6%89%B9%E5%88%A4%E6%80%A7%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E9%80%80%E5%8C%96"><span class="toc-text">1.2.3 批判性思维能力退化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-4-%E5%85%83%E8%AE%A4%E7%9F%A5%E8%83%BD%E5%8A%9B%E8%96%84%E5%BC%B1%EF%BC%9A%E4%B8%8D%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E2%80%9C%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E2%80%9D"><span class="toc-text">1.2.4 元认知能力薄弱：不知道自己“不知道什么”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-5-%E8%87%AA%E5%B7%B1%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98"><span class="toc-text">1.2.5 自己学习的效率问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-6-%E6%80%BB%E7%BB%93"><span class="toc-text">1.2.6 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-7-%E4%BE%8B%E5%AD%90"><span class="toc-text">1.2.7 例子</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/07/games/diablo2/d2-007/" title="暗黑破坏神2 --- 第七章 Build 刺客"><img src="/ai-classroom/2025/07/07/games/diablo2/d2-007/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第七章 Build 刺客"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/07/games/diablo2/d2-007/" title="暗黑破坏神2 --- 第七章 Build 刺客">暗黑破坏神2 --- 第七章 Build 刺客</a><time datetime="2025-07-07T17:24:57.000Z" title="发表于 2025-07-07 10:24:57">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/06/games/diablo2/d2-006/" title="暗黑破坏神2 --- 第六章 Build 魔法使"><img src="/ai-classroom/2025/07/06/games/diablo2/d2-006/cover.webp" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第六章 Build 魔法使"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/06/games/diablo2/d2-006/" title="暗黑破坏神2 --- 第六章 Build 魔法使">暗黑破坏神2 --- 第六章 Build 魔法使</a><time datetime="2025-07-06T19:14:46.000Z" title="发表于 2025-07-06 12:14:46">2025-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/05/games/diablo2/d2-005/" title="暗黑破坏神2 --- 第五章 Build 佣兵米山"><img src="/ai-classroom/2025/07/05/games/diablo2/d2-005/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第五章 Build 佣兵米山"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/05/games/diablo2/d2-005/" title="暗黑破坏神2 --- 第五章 Build 佣兵米山">暗黑破坏神2 --- 第五章 Build 佣兵米山</a><time datetime="2025-07-06T04:17:16.000Z" title="发表于 2025-07-05 21:17:16">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/03/games/diablo2/d2-003/" title="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝"><img src="/ai-classroom/2025/07/03/games/diablo2/d2-003/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/03/games/diablo2/d2-003/" title="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝">暗黑破坏神3 --- 第三章 物品掉落机制及刷宝</a><time datetime="2025-07-03T19:14:41.000Z" title="发表于 2025-07-03 12:14:41">2025-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论"><img src="/ai-classroom/2025/07/01/games/diablo2/d2-001/cover.avif" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第一章 总论"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论">暗黑破坏神2 --- 第一章 总论</a><time datetime="2025-07-01T17:06:39.000Z" title="发表于 2025-07-01 10:06:39">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2019 - 2025 By lifespace</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/ai-classroom/js/utils.js?v=5.4.0-b2"></script><script src="/ai-classroom/js/main.js?v=5.4.0-b2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
