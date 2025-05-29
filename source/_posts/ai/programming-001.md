@@ -8,6 +8,7 @@ categories:
   - 计算机
   - 编程
 mathjax: "true"
+cover: cover.jpg
 ---
 # 第一章 计算机编程概述
 

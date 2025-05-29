@@ -7,8 +7,8 @@ tags:
 categories:
   - 计算机
   - 软件服务
+cover: cover.jpg
 ---
-# 第四章 博客服务
 ## 4.1 常见的博客服务
 
 ### 4.1.1 开启你的数字写作之旅
@@ -501,6 +501,18 @@ layout: tags
 
 ``` yml
 lightbox: fancybox
+```
+
+#### 增加文章首页卡片展示图
+
+整个网站已经开启了 post_asset_folder: true，那么可以使用最推荐的方式：把图片放进文章自己的资源文件夹中，并通过 Front-matter 引用该图片作为封面图。
+
+```bash
+# 上传的图片改名为 `cover.png`，放在如下目录（文件名可以任意）
+source/_posts/blog-doc1/cover.png
+
+# 在Markdown的 Front-matter 中添加封面字段
+cover: cover.png  # 注意这里直接写文件名，不加路径
 ```
 
 ### 4.2.9 配置 Icarus 主题（未完成）

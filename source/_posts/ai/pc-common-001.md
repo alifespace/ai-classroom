@@ -8,9 +8,8 @@ categories:
 mathjax: "true"
 updated: 2025-05-08 14:00:59
 layout: post
+cover: cover.jpg
 ---
-# 第一章 计算机常用知识
-
 ## 1.1 操作系统
 
 操作系统（Operating System, OS）就是一台电脑或手机的**大管家 + 指挥中心**。它不创造内容，但它**安排一切、管理一切、协调一切**。没有它，电脑和手机就是一堆金属和电路板，啥也干不了。
