@@ -1,0 +1,524 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/ai-classroom/css/bilicard.css">
+<!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第一章 DuckDB 概述 | 生命不息，学习不止</title><meta name="author" content="lifespace"><meta name="copyright" content="lifespace"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.1 DuckDB 介绍 DuckDB 是一款功能强大、易于使用且性能卓越的分析型数据库，特别适合需要快速、轻量级、嵌入式数据分析的场景。它在处理本地文件和远程云存储上的列式数据方面表现出色，是现代数据工具链中一个日益重要的组成部分。 1.1.1 DuckDB 是什么？ DuckDB 是一个高性能、嵌入式、分析型数据库管理系统 (DBMS)。它被设计用来在您的应用程序内部直接运行，无需单独的服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 DuckDB 概述">
+<meta property="og:url" content="https://alifespace.github.io/2025/05/21/db/duckdb-001/index.html">
+<meta property="og:site_name" content="生命不息，学习不止">
+<meta property="og:description" content="1.1 DuckDB 介绍 DuckDB 是一款功能强大、易于使用且性能卓越的分析型数据库，特别适合需要快速、轻量级、嵌入式数据分析的场景。它在处理本地文件和远程云存储上的列式数据方面表现出色，是现代数据工具链中一个日益重要的组成部分。 1.1.1 DuckDB 是什么？ DuckDB 是一个高性能、嵌入式、分析型数据库管理系统 (DBMS)。它被设计用来在您的应用程序内部直接运行，无需单独的服务">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://alifespace.github.io/2025/05/21/db/duckdb-001/cover.png">
+<meta property="article:published_time" content="2025-05-21T18:03:53.000Z">
+<meta property="article:modified_time" content="2025-06-01T08:28:48.421Z">
+<meta property="article:author" content="lifespace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alifespace.github.io/2025/05/21/db/duckdb-001/cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "第一章 DuckDB 概述",
+  "url": "https://alifespace.github.io/2025/05/21/db/duckdb-001/",
+  "image": "https://alifespace.github.io/2025/05/21/db/duckdb-001/cover.png",
+  "datePublished": "2025-05-21T18:03:53.000Z",
+  "dateModified": "2025-06-01T08:28:48.421Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "lifespace",
+      "url": "https://alifespace.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/ai-classroom/img/favicon.png"><link rel="canonical" href="https://alifespace.github.io/2025/05/21/db/duckdb-001/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/ai-classroom/css/index.css?v=5.4.0-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-39ZQR3BVZ9"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-39ZQR3BVZ9')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-39ZQR3BVZ9', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/ai-classroom/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第一章 DuckDB 概述',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/ai-classroom/2025/05/21/db/duckdb-001/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/ai-classroom/"><span class="site-name">生命不息，学习不止</span></a><a class="nav-page-title" href="/ai-classroom/"><span class="site-name">第一章 DuckDB 概述</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">第一章 DuckDB 概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-21T18:03:53.000Z" title="发表于 2025-05-21 11:03:53">2025-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-01T08:28:48.421Z" title="更新于 2025-06-01 01:28:48">2025-06-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/ai-classroom/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/ai-classroom/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-1-DuckDB-介绍">1.1 DuckDB 介绍</h2>
+<p>DuckDB 是一款功能强大、易于使用且性能卓越的分析型数据库，特别适合需要快速、轻量级、嵌入式数据分析的场景。它在处理本地文件和远程云存储上的列式数据方面表现出色，是现代数据工具链中一个日益重要的组成部分。</p>
+<h3 id="1-1-1-DuckDB-是什么？">1.1.1 DuckDB 是什么？</h3>
+<p>DuckDB 是一个<strong>高性能、嵌入式、分析型数据库管理系统 (DBMS)</strong>。它被设计用来在您的应用程序内部直接运行，无需单独的服务器进程，类似于分析领域的 SQLite。</p>
+<h3 id="1-1-2-DuckDB-的核心特点和优势">1.1.2 DuckDB 的核心特点和优势</h3>
+<ol>
+<li>
+<p><strong>嵌入式 (Embedded)：</strong></p>
+<ul>
+<li><strong>无需独立服务器：</strong> DuckDB 不像传统的数据库（如 PostgreSQL, MySQL）那样需要一个独立的数据库服务器进程。它以库的形式集成到您的应用程序中（例如 Python、R、Java、Node.js 等），直接在应用程序的内存和文件系统中运行；</li>
+<li><strong>零配置、易于部署：</strong> 这使得它非常轻量级，易于分发和部署，几乎是零配置即可开始使用；</li>
+</ul>
+</li>
+<li>
+<p><strong>分析型数据库 (Analytical Database / OLAP)：</strong></p>
+<ul>
+<li><strong>专为 OLAP 工作负载优化：</strong> 与事务型数据库（OLTP）不同，DuckDB 专门为在线分析处理（OLAP）工作负载而设计。它擅长处理复杂的分析查询，如聚合（SUM, AVG）、分组（GROUP BY）、H）、排序（ORDER BY）和连接（JOIN）大量数据；</li>
+<li><strong>列式存储 (Columnar Storage)：</strong> DuckDB 的内部数据存储是列式的。这意味着它将同一列的数据存储在一起；
+<ul>
+<li><strong>优势：</strong> 这极大地提高了分析查询的效率，因为查询通常只涉及少数几列，DuckDB 无需读取不相关的列数据。它支持高效的<strong>列裁剪 (Column Pruning)</strong> 和<strong>谓词下推 (Predicate Pushdown)</strong>；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>高性能 (High Performance)：</strong></p>
+<ul>
+<li><strong>向量化执行引擎：</strong> DuckDB 采用向量化（vectorized）执行引擎，能够一次处理多行数据（批处理），极大地提升了查询速度；</li>
+<li><strong>多核优化：</strong> 充分利用现代 CPU 的多核优势进行并行计算；</li>
+<li><strong>缓存友好：</strong> 优化了数据访问模式以更好地利用 CPU 缓存；</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL 支持 (SQL Support)：</strong></p>
+<ul>
+<li>DuckDB 支持标准的 SQL 语言，包括高级分析功能，如窗口函数（Window Functions）、通用表表达式（CTE）等；</li>
+</ul>
+</li>
+<li>
+<p><strong>直接文件读取 (Direct File Reading)：</strong></p>
+<ul>
+<li>这是 DuckDB 的一个突出特性。它能够<strong>直接从各种文件格式和远程存储中读取数据</strong>，而无需预先导入到数据库中；
+<ul>
+<li><strong>支持格式：</strong> Parquet, CSV, JSON, Arrow, SQLite 等；</li>
+<li><strong>远程存储：</strong> 原生支持 <strong>AWS S3、Google Cloud Storage (GCS)、Azure Blob Storage</strong> 以及其他 S3 兼容的存储。它只会按需读取所需的数据片段，而不是下载整个文件，非常适合云端数据分析；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>扩展性 (Extensibility)：</strong></p>
+<ul>
+<li>DuckDB 拥有一个扩展系统，允许用户安装和加载额外的功能，例如对新的文件格式、新的函数或新的外部数据源的支持；</li>
+</ul>
+</li>
+<li>
+<p><strong>开源 (Open Source)：</strong></p>
+<ul>
+<li>DuckDB 是一个开源项目，拥有活跃的社区支持；</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-1-3-典型应用场景：">1.1.3 典型应用场景：</h3>
+<ul>
+<li><strong>本地数据分析：</strong> 作为 Python (Pandas) 或 R 语言数据分析的替代或补充，处理本地 CSV, Parquet 等文件；</li>
+<li><strong>交互式数据探索：</strong> 快速对数据进行探索性分析，无需启动大型数据仓库或 Spark 集群；</li>
+<li><strong>数据管道中的轻量级 ETL：</strong> 在数据管道的边缘或中间阶段进行数据转换和清理；</li>
+<li><strong>数据可视化工具的后端：</strong> 作为桌面或 Web 应用中数据可视化组件的本地数据引擎；</li>
+<li><strong>云数据分析：</strong> 直接查询 S3、GCS 等云存储上的大数据文件，进行快速 ad-hoc 查询；</li>
+<li><strong>嵌入式分析：</strong> 在需要分析功能的应用程序中嵌入数据库；</li>
+</ul>
+<h2 id="1-2-技术解释">1.2 技术解释</h2>
+<h3 id="1-2-1-列式存储-Columnar-Storage">1.2.1 列式存储 (Columnar Storage)</h3>
+<p>列式存储（<strong>Columnar Storage</strong>）是一种与传统行式存储（<strong>Row-based Storage</strong>）相对的数据存储方式，广泛用于数据仓库、OLAP系统和分析型数据库中（如 Apache Parquet, Apache ORC, ClickHouse, ColumnStore 等）。列式存储的设计目标是<strong>最大化读性能与压缩效率</strong>，它在设计上做出如下权衡：</p>
+<ul>
+<li><strong>牺牲写入性能</strong>（写一行要拆成多列分开写）；</li>
+<li><strong>提升读性能</strong>（查询特定列时更快）；</li>
+<li><strong>提高压缩比与计算效率</strong>；</li>
+</ul>
+<p>因此，列式存储成为现代分析型数据库、数据仓库等系统的首选结构。相比之下，行式存储更适用于传统关系型数据库与事务处理系统。</p>
+<h4 id="1-什么是列式存储">1. 什么是列式存储</h4>
+<p>在<strong>列式存储</strong>中，数据库将每一列的数据<strong>独立存储</strong>在物理磁盘或内存中。假设有如下表格（行式存储下的数据）：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Alice</td>
+<td>30</td>
+<td>50000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bob</td>
+<td>35</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Charlie</td>
+<td>40</td>
+<td>70000</td>
+</tr>
+<tr>
+<td><strong>行式存储</strong>会按顺序存储整个行的数据块（如：1, Alice, 30, 50000</td>
+<td>2, Bob, 35, 60000）。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>列式存储</strong>则分别存储列（如下）：</p>
+<ul>
+<li>ID: <code>1, 2, 3</code>；</li>
+<li>Name: <code>Alice, Bob, Charlie</code>；</li>
+<li>Age: <code>30, 35, 40</code>；</li>
+<li>Salary: <code>50000, 60000, 70000</code>；</li>
+</ul>
+<h4 id="设计原因与优势">设计原因与优势</h4>
+<p><strong>1. 优化查询性能（尤其是分析型查询）</strong></p>
+<ul>
+<li>在数据分析中，常常只需读取某几列数据（例如：<code>SELECT Age, Salary FROM employees</code>）；</li>
+<li>列式存储可以只扫描所需的列，<strong>避免读取无关列的数据</strong>，显著减少 I/O 和内存使用；</li>
+</ul>
+<p><strong>2. 更高的压缩率</strong></p>
+<ul>
+<li>相同类型的数据连续存储（例如：Salary列全是数字），更适合<strong>压缩算法</strong>（如RLE、字典编码、位图编码等）；</li>
+<li>相较于行式存储的数据杂糅格式，列式压缩后体积小，读取速度快；</li>
+</ul>
+<p><strong>3. 更适合向量化计算</strong></p>
+<ul>
+<li>列式数据格式天然适合<strong>SIMD指令集</strong>进行批量处理（如向量加减乘除），在现代CPU上效率更高。</li>
+</ul>
+<p><strong>4. 易于并行处理</strong></p>
+<ul>
+<li>各列数据可独立读取与处理，<strong>并行化效率高</strong>，在大规模并发分析任务中表现优越；</li>
+</ul>
+<h3 id="1-2-2-Parquet-格式">1.2.2 Parquet 格式</h3>
+<p>Apache Parquet 是一种<strong>列式存储格式</strong>，专为高效存储和处理<strong>大规模数据分析任务</strong>而设计。它被广泛用于大数据生态系统（如 Hadoop, Spark, Presto, Hive 等）中。</p>
+<h4 id="Parquet-的内部结构">Parquet 的内部结构</h4>
+<p>Parquet 的文件结构是层级化的，<strong>文件 → Row Group → Column Chunk → Page</strong>，如下所示：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+------------------------+</span><br><span class="line">|     Parquet File       |</span><br><span class="line">+------------------------+</span><br><span class="line">| File Header            |</span><br><span class="line">| Row Group(s)           |  ← 一或多个</span><br><span class="line">|   Column Chunk(s)      |    ← 每列独立存储</span><br><span class="line">|     Page(s)            |      ← Data/Dictionary/Index</span><br><span class="line">| File Footer (Metadata) |</span><br><span class="line">+------------------------+</span><br></pre></td></tr></table></figure>
+<p><strong>1. File Header</strong></p>
+<ul>
+<li>标志魔数（magic number）：<code>PAR1</code>，用于标识文件是 Parquet 格式。</li>
+</ul>
+<p><strong>2. Row Group（行组）</strong></p>
+<ul>
+<li>一个 row group 中保存一定数量的<strong>完整行</strong>，但每列数据是<strong>分开存储</strong>的；</li>
+<li>每个 row group 可独立读取，<strong>并发读取非常高效</strong>；</li>
+</ul>
+<p><strong>3. Column Chunk（列块）</strong></p>
+<ul>
+<li>每个列数据在 row group 中为一个 column chunk，数据类型一致；</li>
+<li>每个 column chunk 中可进一步压缩、编码；</li>
+</ul>
+<p><strong>4. Page（页）</strong></p>
+<ul>
+<li>Column Chunk 被划分为多个 page，分为三种类型：
+<ul>
+<li><strong>Data Page</strong>：实际数据存储页（可包含压缩与编码）；</li>
+<li><strong>Dictionary Page</strong>：词典编码页（用于低基数字段）；</li>
+<li><strong>Index Page（可选）</strong>：用于定位查找优化；</li>
+</ul>
+</li>
+</ul>
+<p><strong>5. File Footer（元数据）</strong></p>
+<ul>
+<li>描述所有 row group, column chunk 的元信息（offset、schema、统计信息等）；</li>
+<li>支持 predicate pushdown（谓词下推）与 schema evolution（模式演进）;</li>
+</ul>
+<h4 id="设计原理与优化技术">设计原理与优化技术</h4>
+<p><strong>1. 列式存储结构</strong></p>
+<ul>
+<li>允许只读取所需的列，显著减少 I/O，适合 SELECT 查询分析；</li>
+</ul>
+<p><strong>2. 压缩与编码优化</strong></p>
+<ul>
+<li>支持多种编码（如 RLE, Bit Packing, Delta 等）与压缩（如 Snappy, Gzip, ZSTD）；
+<ul>
+<li>同类型数据连续，压缩率高；</li>
+<li>编码减少重复（如日期、性别、状态字段）；</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 谓词下推（Predicate Pushdown）</strong></p>
+<ul>
+<li>通过读取 footer 中的 min/max 等统计信息，<strong>跳过不相关的数据块</strong>，加速查询；</li>
+</ul>
+<p><strong>4. Schema 演进（Schema Evolution）</strong></p>
+<ul>
+<li>支持字段的添加/删除；</li>
+<li>读写解耦，允许未来扩展字段但兼容旧文件；</li>
+</ul>
+<p><strong>5. 向量化计算（Vectorized Execution）</strong></p>
+<ul>
+<li>结构支持批量读取列数据，优化 Spark, Presto 的向量化处理；</li>
+</ul>
+<h4 id="选择合适的格式">选择合适的格式</h4>
+<p><strong>Parquet 文件</strong> 和 <strong>DuckDB 数据库表</strong> 都可以用来高效存储列式数据，支持分析型查询，但它们适用的场景有重要区别。从以下几个角度来系统对比它们，<strong>什么时候用 Parquet 文件，什么时候用 DuckDB 表</strong>更合适。</p>
+<p><strong>1. 核心差异概览</strong></p>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Parquet 文件</th>
+<th>DuckDB 表（内置或持久化）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储形式</td>
+<td>纯文件，列式存储</td>
+<td>嵌入式数据库，支持表结构</td>
+</tr>
+<tr>
+<td>写入操作</td>
+<td>较慢，不适合频繁写</td>
+<td>支持写入、更新、事务</td>
+</tr>
+<tr>
+<td>查询能力</td>
+<td>需依赖引擎加载（如 Pandas、Spark）</td>
+<td>SQL 原生、内嵌、即开即用</td>
+</tr>
+<tr>
+<td>查询性能</td>
+<td>优秀（尤其大文件 + 过滤）</td>
+<td>极快（向量化 + 索引）</td>
+</tr>
+<tr>
+<td>事务支持</td>
+<td>不支持</td>
+<td>支持事务、索引、JOIN</td>
+</tr>
+<tr>
+<td>易移植性</td>
+<td>极高，跨工具标准格式</td>
+<td>好，但依赖 DuckDB 引擎</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>更适合 TB 级别以上</td>
+<td>适合中小数据（MB~GB）</td>
+</tr>
+<tr>
+<td><strong>2. Parquet 推荐使用场景</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>数据共享与跨系统传输</strong>
+<ul>
+<li>Parquet 是标准格式，兼容 Spark, Hive, Pandas, Snowflake, Presto, Athena 等；</li>
+<li>用于“数据湖”场景，特别适合“写一次、读多次”；
+<ul>
+<li>例：将 ETL 处理好的数据导出为 Parquet，供 BI 工具或其他系统分析；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>静态、大规模分析数据存储</strong>
+<ul>
+<li>TB 级别数据（日志、监控、行为数据）存储成本低，读取快；</li>
+<li>无需频繁更新，只需要高效读取；<br>
+例：用户行为日志、交易记录的归档数据；</li>
+</ul>
+</li>
+<li><strong>长期归档</strong>
+<ul>
+<li>Parquet 文件可压缩、可版本控制，适合持久存储历史快照数据；</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 使用 DuckDB 数据库表的场景</strong></p>
+<ul>
+<li><strong>交互式、本地分析场景</strong>
+<ul>
+<li>数据量不大（一般小于100GB），但需要频繁做 SQL 查询分析、聚合、连接等；</li>
+<li>查询语法更丰富，且速度极快（向量化引擎）；
+<ul>
+<li>例：本地 CSV 转换、临时分析、Jupyter Notebook 数据实验；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数据需要写入、更新或暂存</strong>
+<ul>
+<li>支持 INSERT、UPDATE、DELETE；</li>
+<li>可以直接缓存中间结果，适合数据探索或流水线任务中的中间状态。
+<ul>
+<li>例：数据清洗或多步处理流程中的中间阶段。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Parquet 读取太慢的情况下（小数据）</strong>
+<ul>
+<li>DuckDB 加载 Parquet 虽快，但对小数据（几十万行以内），用内存表更直接；</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. 混合用法（推荐模式）</strong></p>
+<p>实际上，<strong>最佳实践是混合使用</strong> Parquet 和 DuckDB。</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>用途</th>
+<th>技术建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据准备</td>
+<td>存储原始或历史数据</td>
+<td>用 Parquet 存档</td>
+</tr>
+<tr>
+<td>加载分析</td>
+<td>临时读入、联表处理</td>
+<td>用 DuckDB SQL 操作 Parquet</td>
+</tr>
+<tr>
+<td>中间结果</td>
+<td>缓存或调试数据</td>
+<td>用 DuckDB 内存表或持久表</td>
+</tr>
+<tr>
+<td>输出共享</td>
+<td>导出结果数据</td>
+<td>输出为 Parquet 或 CSV</td>
+</tr>
+</tbody>
+</table>
+<h4 id="转换-csv-文件到-parquet">转换 csv 文件到 parquet</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duckdb -c <span class="string">&quot;COPY (SELECT * FROM read_csv_auto(&#x27;./2024-05.csv&#x27;)) TO &#x27;./2024-05.parquet&#x27; (FORMAT &#x27;parquet&#x27;);&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-Parquet-文件存储方式">1.2.3 Parquet 文件存储方式</h3>
+<p>对于非敏感数据，我们可以把<code>parquet</code>文件上传到<code>github</code>上保存。对于敏感数据有以下几种处理方式：</p>
+<ol>
+<li>本地保存，然后使用<code>duckdb</code>进行分析；</li>
+<li>保存在<code>Google Drive</code>上，然后使用<code>colab</code>服务，利用<code>python + duckdb</code>进行处理；</li>
+<li>保存在<code>S3、GCS</code>等云服务器上，然后进行处理；</li>
+</ol>
+<h4 id="GCS-Google-Cloud-Storage-保存文件">GCS (Google Cloud Storage) 保存文件</h4>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alifespace.github.io">lifespace</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alifespace.github.io/2025/05/21/db/duckdb-001/">https://alifespace.github.io/2025/05/21/db/duckdb-001/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alifespace.github.io" target="_blank">生命不息，学习不止</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/ai-classroom/2025/05/21/db/duckdb-001/cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论"><img class="cover" src="/ai-classroom/2025/07/01/games/diablo2/d2-001/cover.avif" onerror="onerror=null;src='/ai-classroom/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">暗黑破坏神2 --- 第一章 总论</div></div><div class="info-2"><div class="info-item-1"> 1.1 历史简介 《暗黑破坏神》（Diablo）系列是暴雪娱乐（Blizzard Entertainment）旗下一款极具影响力的动作角色扮演（Action Role-Playing Game, ARPG）游戏。它的起源和发展，塑造了现代 ARPG 的许多经典元素。 1.1.1《暗黑破坏神》游戏起源 (Diablo I)  最初构想：《暗黑破坏神》最初的构想并不是一款 ARPG，而是一款由 Condor （后来更名为 Blizzard North）开发的回合制角色扮演游戏。游戏的灵感来源于地牢探索和角色成长； 暴雪的介入： Condor 在开发过程中，与暴雪娱乐取得了联系。暴雪对这个项目很感兴趣，但在游戏类型上提出了重要建议：将其改为实时战斗。这一决策最终塑造了《暗黑破坏神》成为一款开创性的 ARPG； 核心理念： 游戏的理念是简单而直接的乐趣。  随机生成的地牢： 每次进入地牢都有不同的布局，增加了重复游玩的乐趣； 无尽的刷宝（Loot）： 击杀怪物掉落各种随机属性的装备，玩家追求更好的装备来提升角色； 简单的鼠标操作： 大部分操作可以通过鼠标完成，降低了上手难度； 哥特式恐...</div></div></div></a><a class="pagination-related" href="/ai-classroom/2025/05/20/ai/ai-genenal-001/" title="第一章 AI 通论"><img class="cover" src="/ai-classroom/2025/05/20/ai/ai-genenal-001/cover.jpg" onerror="onerror=null;src='/ai-classroom/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">第一章 AI 通论</div></div><div class="info-2"><div class="info-item-1">1.1 人类是如何学习知识的 这是个非常本质的问题，人类学习的核心不是“记住信息”，或者会做某些习题。而是将信息纳入个体已有的知识网络中，使其具有意义。人类学习的本质是主动构建与修正认知模型。 1.1.1 学习的目的 人类学习的目的是最起码要能够获得迁移应用的知识。人类学习的底线指标是：是否能将所学用于陌生场景下的“问题识别 + 解决策略构建”中。 能够迁移是学习的核心指标。只有当你能在不同题型、不同科目、真实生活、陌生任务中灵活运用所学，这才是知识的“拥有权”，不是“租用权”。  建构了知识网络； 掌握了抽象规则； 能在变化的场景中识别出不变的部分；  没有迁移，意味着学习只停留在“表层加工”：  背了历史事件，但不知道它和现实政治有什么关系； 会解方程，但不知道如何用它建模生活问题； 背了定义，但换种问法就答不出；  1.1.2 三个基本过程 1. 感知（Perception） 人类通过感官（视觉、听觉、触觉等）接收外界刺激，这是原始数据的来源。比如你看到“苹果”，听到“自由落体”。 2. 加工与理解（Processing） 大脑会将感知到的信息与已有知识结构连接起来。这个过...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/ai-classroom/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/ai-classroom/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">lifespace</div><div class="author-info-description"></div><div class="site-data"><a href="/ai-classroom/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/ai-classroom/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/ai-classroom/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-DuckDB-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1 DuckDB 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-DuckDB-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">1.1.1 DuckDB 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-DuckDB-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9%E5%92%8C%E4%BC%98%E5%8A%BF"><span class="toc-text">1.1.2 DuckDB 的核心特点和优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-text">1.1.3 典型应用场景：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%8A%80%E6%9C%AF%E8%A7%A3%E9%87%8A"><span class="toc-text">1.2 技术解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E5%88%97%E5%BC%8F%E5%AD%98%E5%82%A8-Columnar-Storage"><span class="toc-text">1.2.1 列式存储 (Columnar Storage)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%97%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-text">1. 什么是列式存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%9B%A0%E4%B8%8E%E4%BC%98%E5%8A%BF"><span class="toc-text">设计原因与优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-Parquet-%E6%A0%BC%E5%BC%8F"><span class="toc-text">1.2.2 Parquet 格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Parquet-%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-text">Parquet 的内部结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="toc-text">设计原理与优化技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-text">选择合适的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2-csv-%E6%96%87%E4%BB%B6%E5%88%B0-parquet"><span class="toc-text">转换 csv 文件到 parquet</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-Parquet-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">1.2.3 Parquet 文件存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GCS-Google-Cloud-Storage-%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6"><span class="toc-text">GCS (Google Cloud Storage) 保存文件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/07/games/diablo2/d2-007/" title="暗黑破坏神2 --- 第七章 Build 刺客"><img src="/ai-classroom/2025/07/07/games/diablo2/d2-007/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第七章 Build 刺客"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/07/games/diablo2/d2-007/" title="暗黑破坏神2 --- 第七章 Build 刺客">暗黑破坏神2 --- 第七章 Build 刺客</a><time datetime="2025-07-07T17:24:57.000Z" title="发表于 2025-07-07 10:24:57">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/06/games/diablo2/d2-006/" title="暗黑破坏神2 --- 第六章 Build 魔法使"><img src="/ai-classroom/2025/07/06/games/diablo2/d2-006/cover.webp" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第六章 Build 魔法使"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/06/games/diablo2/d2-006/" title="暗黑破坏神2 --- 第六章 Build 魔法使">暗黑破坏神2 --- 第六章 Build 魔法使</a><time datetime="2025-07-06T19:14:46.000Z" title="发表于 2025-07-06 12:14:46">2025-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/05/games/diablo2/d2-005/" title="暗黑破坏神2 --- 第五章 Build 佣兵米山"><img src="/ai-classroom/2025/07/05/games/diablo2/d2-005/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第五章 Build 佣兵米山"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/05/games/diablo2/d2-005/" title="暗黑破坏神2 --- 第五章 Build 佣兵米山">暗黑破坏神2 --- 第五章 Build 佣兵米山</a><time datetime="2025-07-06T04:17:16.000Z" title="发表于 2025-07-05 21:17:16">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/03/games/diablo2/d2-003/" title="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝"><img src="/ai-classroom/2025/07/03/games/diablo2/d2-003/cover.jpg" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/03/games/diablo2/d2-003/" title="暗黑破坏神3 --- 第三章 物品掉落机制及刷宝">暗黑破坏神3 --- 第三章 物品掉落机制及刷宝</a><time datetime="2025-07-03T19:14:41.000Z" title="发表于 2025-07-03 12:14:41">2025-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论"><img src="/ai-classroom/2025/07/01/games/diablo2/d2-001/cover.avif" onerror="this.onerror=null;this.src='/ai-classroom/img/404.jpg'" alt="暗黑破坏神2 --- 第一章 总论"/></a><div class="content"><a class="title" href="/ai-classroom/2025/07/01/games/diablo2/d2-001/" title="暗黑破坏神2 --- 第一章 总论">暗黑破坏神2 --- 第一章 总论</a><time datetime="2025-07-01T17:06:39.000Z" title="发表于 2025-07-01 10:06:39">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2019 - 2025 By lifespace</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/ai-classroom/js/utils.js?v=5.4.0-b2"></script><script src="/ai-classroom/js/main.js?v=5.4.0-b2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
