@@ -109,3 +109,17 @@ Scoop 从称为 "buckets" 的软件仓库中获取软件包信息。默认情况
 - 使用 `scoop bucket known` 命令可以列出一些 Scoop 已知的常用仓库；
 - 访问 Scoop 的官方 Wiki 页面，其中列出了一些已知的 buckets：[https://github.com/ScoopInstaller/Scoop/wiki/Buckets](https://github.com/ScoopInstaller/Scoop/wiki/Buckets)
 - 在 GitHub 上搜索 "scoop bucket" 关键字，你会发现许多个人或社区维护的仓库；
+
+## 2.3 浏览器及其插件（plugins）
+
+### 2.3.1 常见的浏览器
+
+#### Google Chrome
+
+在 Windows, macOS, iOS, Android 上都有，Google Chrome 于 2008 年 9 月 2 日首次发布，最初仅限于 Microsoft Windows 操作系统。其发布时的主要目标是：提升速度、稳定性，增强安全性，提供更简洁的用户界面。
+
+Google Chrome 与开源社区有着非常深厚的关系，这主要体现在 **Chromium** 项目上。
+
+#### Microsoft Edge
+
+以

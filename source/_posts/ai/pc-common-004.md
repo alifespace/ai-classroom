@@ -205,7 +205,7 @@ INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
 #### 建立一篇新的文章
 
 ```bash
-
+hexo new -
 ```
 ### 4.2.5 安装Hexo主题
 
@@ -497,7 +497,7 @@ layout: tags
 
 #### 增加图片的放大功能
 
-1. 请将 `_config.buttrfly.yml` 中的 **lightbox 设置**改为：
+1. 将 `_config.buttrfly.yml` 中的 **lightbox 设置**改为：
 
 ``` yml
 lightbox: fancybox

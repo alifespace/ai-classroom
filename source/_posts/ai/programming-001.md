@@ -54,7 +54,7 @@ int main() {
 add_numbers:                            ; add_numbers 函数的开始
 .LFB0:
         .cfi_startproc                  ; CFI (Call Frame Information) 开始
-        pushq   %rbp                    ; 保存栈基址寄存器
+        push   %rbp                     ; 保存栈基址寄存器
         .cfi_def_cfa_offset 16
         .cfi_offset 6, -16
         movq    %rsp, %rbp              ; 设置新的栈基址
@@ -109,7 +109,7 @@ add.o: file format elf64-x86-64
 Disassembly of section .text: 
 
 0000000000000000 <add_numbers>:
-0: 55 push                  %rbp
+0: 55                       push %rbp
 1: 48 89 e5                 mov %rsp,%rbp
 4: 89 7d fc                 mov %edi,-0x4(%rbp)
 7: 89 75 f8                 mov %esi,-0x8(%rbp)
@@ -181,3 +181,6 @@ EC 10 C7 45 FC 05 00 00 00 C7 45 F8 03 00 00 00
 | 同或（XNOR） | —                   | `not (A ^ B)`   | 相同为真      | `not (True ^ True)`   | `True`  |
 | 与非（NAND） | $\lnot (A \land B)$ | `not (A and B)` | 非全真为真     | `not (True and True)` | `False` |
 | 或非（NOR）  | $\lnot (A \lor B)$  | `not (A or B)`  | 全假为真      | `not (True or False)` | `False` |
+
+
+
