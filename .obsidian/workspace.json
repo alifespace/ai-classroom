@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/games/diablo2/d2-001.md",
+                "file": "Test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "d2-001"
+              "title": "Test"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/games/diablo2/d2-001.md",
+                "file": "Test.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of d2-001"
+              "title": "Outline of Test"
             }
           }
         ],
@@ -169,6 +169,11 @@
   },
   "active": "a62303bb6eea49f0",
   "lastOpenFiles": [
+    "README.md",
+    "Test.md",
+    "source/Pasted image 20250831071249.png",
+    "source/Pasted image 20250705144645.png",
+    "source/_posts/games/diablo2/d2-001.md",
     "source/_posts/ai/programming-011-flask.md",
     "source/_posts/ai/programming-009-db.md",
     "source/_posts/ai/programming-008-db.md",
@@ -201,8 +206,6 @@
     "public/2025/05/08/ai/pc-structure-002/20250509132333.png",
     "public/2025/05/08/ai/pc-structure-002/20250509132218.png",
     "public/2025/05/08/ai/pc-structure-002/20250509131452.png",
-    "public/2025/05/08/ai/pc-structure-002/20250505080534.png",
-    "public/2025/05/08/ai/pc-structure-002/20250508203923.png",
     "public/2025/05/07/ai/pc-structure-001/index.html",
     "public/2025/04/03/ai/pc-common-003/index.html",
     "public/2025/04/01/ai/pc-common-001/index.html",
@@ -211,9 +214,6 @@
     "node_modules/@babel/plugin-transform-destructuring/README.md",
     "node_modules/@babel/plugin-transform-class-properties/README.md",
     "node_modules/@babel/plugin-transform-computed-properties/README.md",
-    "node_modules/regenerate-unicode-properties/README.md",
-    "node_modules/caniuse-lite/README.md",
-    "node_modules/inferno-vnode-flags/README.md",
-    "node_modules/@babel/compat-data/README.md"
+    "node_modules/regenerate-unicode-properties/README.md"
   ]
 }
