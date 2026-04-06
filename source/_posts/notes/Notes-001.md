@@ -104,6 +104,15 @@ sudo nano /etc/fstab
 ```bash
 git config --global user.name "<用户名>"
 git config --global user.email "<email地址>"
+git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+
+git init
+git add .
+git commit -m "init"
+
+git remote add origin git@github.com:用户名/仓库.git
+git branch -M main
+git push -u origin main
 ```
 
 3. 设置`python`
