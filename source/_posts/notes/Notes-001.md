@@ -35,7 +35,8 @@ GitHub SSH keys:
 | CELL003（Macbook Neo A18） | id_cell003_test01   | 登录测试机器/cell101 |
 | CELL003（Macbook Neo A18） | id_cell003_prod01   | 登录生产机器/cell102 |
 | CELL016（MSI Windows11）   | id_cell016_github   | 登录/git         |
-|                          |                     |                |
+| CELL016（MSI Windows11）   | id_cell016_test01   | 登录测试机器/cell101 |
+| CELL016（MSI Windows11）   | id_cell016_prod01   | 登录生产机器/cell102 |
 
 ## 软件版本
 
