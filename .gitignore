@@ -7,4 +7,5 @@ public/
 .deploy*/
 _multiconfig.yml
 .obsidian/
-.vscode/
+.vscode/.obsidian/workspace.json
+.obsidian/workspace.json
