@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "blog/初始化设置.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "初始化设置"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "blog/初始化设置.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大纲"
+              "title": "初始化设置 的大纲"
             }
           }
         ],
@@ -164,33 +164,37 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
-      "obsidian-git:Open Git source control": false
+      "bases:新建数据库": false
     }
   },
   "active": "a62303bb6eea49f0",
   "lastOpenFiles": [
-    "blog/index.md",
     "quartz-site/public/tags/index-og-image.webp",
-    "quartz-site/public/index-og-image.webp",
+    "quartz-site/public/初始化设置-og-image.webp",
     "quartz-site/public/static/giscus/light.css",
     "quartz-site/public/static/giscus/dark.css",
     "quartz-site/public/static/giscus",
     "quartz-site/public/static/og-image.png",
     "quartz-site/public/static/icon.png",
+    "quartz-site/public/index-og-image.webp",
     "quartz-site/public/static/contentIndex.json",
     "quartz-site/public/index.xml",
+    "quartz-site/public/CNAME",
     "quartz-site/public/static/encryptedContentIndex.json",
     "quartz-site/public/sitemap.xml",
-    "quartz-site/public/CNAME",
     "quartz-site/public/favicon.ico",
     "quartz-site/public/404.html",
+    "README.md",
+    "blog/初始化设置.md",
+    "blog/index.md",
+    "quartz-site/public/initsetupenv-og-image.webp",
+    "quartz-site/public/未命名-og-image.webp",
     "quartz-site/node_modules/@quartz-community/utils/README.md",
     "quartz-site/node_modules/@quartz-community/utils/CHANGELOG.md",
-    "quartz-site/node_modules/rxjs/README.md",
-    "quartz-site/node_modules/rxjs/CODE_OF_CONDUCT.md",
-    "quartz-site/node_modules/rxjs/CHANGELOG.md",
     "quartz-site/node_modules/@quartz-community/types/README.md",
+    "quartz-site/node_modules/rxjs/README.md",
+    "quartz-site/node_modules/rxjs/CHANGELOG.md",
+    "quartz-site/node_modules/rxjs/CODE_OF_CONDUCT.md",
     "quartz-site/node_modules/typescript/SECURITY.md",
     "quartz-site/node_modules/typescript/README.md",
     "quartz-site/node_modules/@bufbuild/protobuf/README.md",
@@ -207,15 +211,9 @@
     "quartz-site/node_modules/isomorphic-git/README.md",
     "quartz-site/node_modules/isomorphic-git/LICENSE.md",
     "quartz-site/node_modules/entities/readme.md",
-    "quartz-site/node_modules/sass-embedded-darwin-arm64/README.md",
-    "quartz-site/node_modules/prettier/THIRD-PARTY-NOTICES.md",
-    "quartz-site/node_modules/mdast-util-to-hast/readme.md",
     "quartz-site/quartz/static/og-image.png",
     "quartz-site/quartz/static/icon.png",
-    "quartz-site/docs/images/social-image-preview-light.png",
     "quartz-site/docs/images/social-image-preview-dark.png",
-    "quartz-site/docs/images/quartz-layout-tablet.png",
-    "quartz-site/docs/images/quartz-layout-mobile.png",
     "quartz-site/docs/Canvas.canvas"
   ]
 }
